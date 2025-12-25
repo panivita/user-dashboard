@@ -34,10 +34,10 @@ const PatientsFetch = () => {
             color = 'yellow';
           }
         }
-        const saved = localStorage.getItem('bookedDate');
-        const savedDate = saved !== null && JSON.parse(saved);
-        const bookedDateList = savedDate.find((datesList: { id: string | number }) => Number(datesList.id) === index);
-        const bookedDate = bookedDateList ? bookedDateList.startDate : '';
+        //const saved = localStorage.getItem('bookedDate');
+        //const savedDate = saved !== null && JSON.parse(saved);
+        //const bookedDateList = savedDate.find((datesList: { id: string | number }) => Number(datesList.id) === index);
+        const bookedDate = '';
         return { ...patients, age: age, color: color, id: index, bookedDate: bookedDate };
       });
       resolve({ patients: patientsWithAge });
