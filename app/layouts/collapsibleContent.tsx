@@ -3,7 +3,7 @@ import { House, Settings, ShoppingCart } from 'lucide-react'
 const primaryNavigation = [
   {
     title: 'Dashboard',
-    url: '/dashboard',
+    url: '/',
     icon: House,
   },
 ]

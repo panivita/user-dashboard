@@ -1,33 +1,13 @@
-import { ChartConfig } from '../ui/chart';
+import { chartConfig, chartData, chartConfigWithTotal } from '../data/chart';
 import { ChartAreaLegend } from '../ui/chart-area-legend';
 import { ChartBarMixed } from '../ui/chart-bar-mixed';
 import { ChartBarMultiple } from '../ui/chart-bar-multiple';
 import { ChartPie } from '../ui/chart-pie';
 
-const chartData = [
-  { month: 'January', female: 186, male: 80 },
-  { month: 'February', female: 305, male: 200 },
-  { month: 'March', female: 237, male: 120 },
-  { month: 'April', female: 73, male: 190 },
-  { month: 'May', female: 209, male: 130 },
-  { month: 'June', female: 214, male: 140 },
-];
-
-const chartConfig = {
-  female: {
-    label: 'Female',
-    color: 'var(--chart-1)',
-  },
-  male: {
-    label: 'Male',
-    color: 'var(--chart-2)',
-  },
-} satisfies ChartConfig;
-
-export const GenderDiagram1 = () => {
+export const MainDiagram = () => {
   return (
     <ChartAreaLegend
-      legend={'Gender'}
+      legend={'Patients'}
       cardDescription={'Showing total patients for the last 6 months'}
       chartConfig={chartConfig}
       chartData={chartData}
@@ -67,10 +47,23 @@ export const DiagramMultiple = ({
 export const DiagramPie = ({ chartDataPie }: { chartDataPie: any }) => {
   return (
     <ChartPie
-      legend={''}
-      cardDescription={''}
+      legend={'Gender'}
+      cardDescription={'Showing female and male patients in %'}
       chartConfig={chartConfig}
       chartData={chartDataPie}
+      nameKey={'sex'}
+      dataKey={'total'}
+    />
+  );
+};
+
+export const DiagramHorizontal = ({ chartDataHorizontal }: { chartDataHorizontal: any }) => {
+  return (
+    <ChartBarMixed
+      legend={'Gender'}
+      cardDescription={'Showing total female and male patients'}
+      chartConfig={chartConfigWithTotal}
+      chartData={chartDataHorizontal}
       nameKey={'sex'}
       dataKey={'total'}
     />

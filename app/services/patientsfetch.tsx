@@ -19,17 +19,21 @@ const PatientsFetch = () => {
       });
       const femaleAge = patientsWithAge.filter(({ sex }) => sex === 'female').map(({ age }) => age);
       const femaleAgeOccurrences = femaleAge.reduce(function (acc, curr) {
-        return acc[curr] ? ++acc[curr] : (acc[curr] = 1), acc;
+        return acc[curr as keyof typeof acc] ? ++acc[curr as keyof typeof acc] : (acc[curr] = 1), acc;
       }, {});
       const maleAge = patientsWithAge.filter(({ sex }) => sex === 'male').map(({ age }) => age);
       const maleAgeOccurrences = maleAge.reduce(function (acc, curr) {
-        return acc[curr] ? ++acc[curr] : (acc[curr] = 1), acc;
+        return acc[curr as keyof typeof acc] ? ++acc[curr as keyof typeof acc] : (acc[curr] = 1), acc;
       }, {});
       const ageSex = [];
       for (const property in femaleAgeOccurrences) {
         for (const prop in maleAgeOccurrences) {
           if (property === prop) {
-            const element = { age: property, female: femaleAgeOccurrences[property], male: maleAgeOccurrences[prop] };
+            const element = {
+              age: property,
+              female: femaleAgeOccurrences[property as keyof typeof femaleAgeOccurrences],
+              male: maleAgeOccurrences[prop as keyof typeof maleAgeOccurrences],
+            };
             ageSex.push(element);
           }
         }
@@ -38,13 +42,13 @@ const PatientsFetch = () => {
         .filter(({ sex, vacAge }) => sex === 'female' && vacAge !== null && vacAge > 0)
         .map(({ vacAge }) => vacAge);
       const femaleAgeVacOccurrences = femaleAgeVac.reduce(function (acc, curr) {
-        return acc[curr] ? ++acc[curr] : (acc[curr] = 1), acc;
+        return acc[curr as keyof typeof acc] ? ++acc[curr as keyof typeof acc] : (acc[curr] = 1), acc;
       }, {});
       const maleAgeVac = patientsWithAge
         .filter(({ sex, vacAge }) => sex === 'male' && vacAge !== null && vacAge > 0)
         .map(({ vacAge }) => vacAge);
       const maleAgeVacOccurrences = maleAgeVac.reduce(function (acc, curr) {
-        return acc[curr] ? ++acc[curr] : (acc[curr] = 1), acc;
+        return acc[curr as keyof typeof acc] ? ++acc[curr as keyof typeof acc] : (acc[curr] = 1), acc;
       }, {});
       const ageSexVac = [];
       for (const property in femaleAgeVacOccurrences) {
@@ -52,14 +56,14 @@ const PatientsFetch = () => {
           if (property === prop) {
             const element = {
               vaccinationAge: property,
-              female: femaleAgeVacOccurrences[property],
-              male: maleAgeVacOccurrences[prop],
+              female: femaleAgeVacOccurrences[property as keyof typeof femaleAgeVacOccurrences],
+              male: maleAgeVacOccurrences[prop as keyof typeof maleAgeVacOccurrences],
             };
             ageSexVac.push(element);
           }
         }
       }
-      resolve({ sex: sex, ageSex: ageSex, vaccinationAgeSex: ageSexVac });
+      resolve({ patients: patientsWithAge, sex: sex, ageSex: ageSex, vaccinationAgeSex: ageSexVac });
     }, 500);
   });
   return patientsPromise;

@@ -1,6 +1,6 @@
-import { ChevronRight, type LucideIcon } from 'lucide-react'
+import { ChevronRight, type LucideIcon } from 'lucide-react';
 
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../ui/collapsible'
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../ui/collapsible';
 import {
   SidebarGroup,
   SidebarMenu,
@@ -9,22 +9,22 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-} from '../ui/sidebar'
-import Link from 'next/link'
+} from '../ui/sidebar';
+import Link from 'next/link';
 
 export function NavMain({
   items,
 }: {
   items: {
-    title: string
-    url?: string
-    icon?: LucideIcon
-    isActive?: boolean
+    title: string;
+    url?: string;
+    icon?: LucideIcon;
+    isActive?: boolean;
     items?: {
-      title: string
-      url: string
-    }[]
-  }[]
+      title: string;
+      url: string;
+    }[];
+  }[];
 }) {
   return (
     <SidebarGroup>
@@ -35,7 +35,7 @@ export function NavMain({
               <CollapsibleTrigger asChild>
                 <SidebarMenuButton
                   tooltip={item.title}
-                  className='data-[state=open]:bg-darkblue px-4 py-5 text-xs text-gray-500 data-[state=open]:font-bold data-[state=open]:text-white'
+                  className='data-[state=open]:bg-[#24447f] px-4 py-5 text-xs text-gray-500 data-[state=open]:font-bold data-[state=open]:text-white'
                 >
                   {item.icon && <item.icon />}
                   <span>{item.title}</span>
@@ -60,5 +60,5 @@ export function NavMain({
         ))}
       </SidebarMenu>
     </SidebarGroup>
-  )
+  );
 }

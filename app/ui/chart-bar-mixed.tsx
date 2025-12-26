@@ -14,17 +14,12 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "../ui/chart"
-import { ChartProps } from './chart-area-legend'
+import { ChartPieProps } from './chart-pie'
 
 export const description = "A mixed bar chart"
 
 
-export function ChartBarMixed({legend,
-    cardDescription,
-    chartConfig,
-    chartData,
-    areaDataKey1,
-    xDataKey,}: ChartProps) {
+export function ChartBarMixed({ legend, cardDescription, chartConfig, chartData, nameKey, dataKey }: ChartPieProps) {
   return (
     <Card>
       <CardHeader>
@@ -42,7 +37,7 @@ export function ChartBarMixed({legend,
             }}
           >
             <YAxis
-              dataKey="browser"
+              dataKey={nameKey}
               type="category"
               tickLine={false}
               tickMargin={10}
@@ -51,12 +46,12 @@ export function ChartBarMixed({legend,
                 chartConfig[value as keyof typeof chartConfig]?.label
               }
             />
-            <XAxis dataKey={xDataKey} type="number" hide />
+            <XAxis dataKey={dataKey} type="number" hide />
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-            <Bar dataKey={areaDataKey1} layout="vertical" radius={5} />
+            <Bar dataKey={dataKey} layout="vertical" radius={5} />
           </BarChart>
         </ChartContainer>
       </CardContent>

@@ -26,7 +26,7 @@ const Calendar = ({ className, classNames, showOutsideDays = true, ...props }: C
         day: 'h-9 w-9 p-0 font-normal aria-selected:opacity-100 rounded-md text-xs grid',
         range_end: 'day-range-end',
         selected:
-          '!bg-darkblue text-neutral-50 hover:bg-neutral-900 hover:text-neutral-50 !focus:bg-darkblue focus:text-neutral-50 dark:bg-neutral-50 dark:text-neutral-900 dark:hover:bg-neutral-50 dark:hover:text-neutral-900 dark:focus:bg-neutral-50 dark:focus:text-neutral-900 hover:shadow-lg hover:shadow-darkblue transition delay-50 duration-200',
+          '!bg-[#24447f] text-neutral-50 hover:bg-neutral-900 hover:text-neutral-50 !focus:bg-[#24447f] focus:text-neutral-50 dark:bg-neutral-50 dark:text-neutral-900 dark:hover:bg-neutral-50 dark:hover:text-neutral-900 dark:focus:bg-neutral-50 dark:focus:text-neutral-900 hover:shadow-lg hover:shadow-darkblue transition delay-50 duration-200',
         today: 'bg-neutral-100 dark:bg-neutral-800 dark:text-neutral-50',
         outside:
           'day-outside text-neutral-500 aria-selected:bg-neutral-100/50 aria-selected:text-neutral-500 dark:text-neutral-400 dark:aria-selected:bg-neutral-800/50 dark:aria-selected:text-neutral-400',

@@ -7,7 +7,7 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } f
 
 export const description = 'A simple pie chart';
 
-type ChartPieProps = {
+export type ChartPieProps = {
   legend: string;
   cardDescription: string;
   chartConfig: ChartConfig;
@@ -24,7 +24,7 @@ export function ChartPie({ legend, cardDescription, chartConfig, chartData, name
         <CardDescription>{cardDescription}</CardDescription>
       </CardHeader>
       <CardContent className='flex-1 pb-0'>
-        <ChartContainer config={chartConfig} className='mx-auto aspect-square max-h-[250px]'>
+        <ChartContainer config={chartConfig} className='mx-auto aspect-square max-h-[200px]'>
           <PieChart>
             <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
             <Pie data={chartData} dataKey={dataKey} nameKey={nameKey} />

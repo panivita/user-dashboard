@@ -57,14 +57,14 @@ img {
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
     --ring: 0 0% 3.9%;
-    --chart-1: #edf1f6;
-    --chart-2: #24447f;
-    --chart-3: 197 37% 24%;
+    --chart-1: #24447f;
+    --chart-2: #edf1f6;
+    --chart-3: rgba(36, 68, 127, 0.4);
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
-    --color-female: #edf1f6;
-    --color-male: #24447f;
+    --color-female: #24447f;
+    --color-male: #edf1f6;
   }
   .dark {
     --background: 0 0% 3.9%;
