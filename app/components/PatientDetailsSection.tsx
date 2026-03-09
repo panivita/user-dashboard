@@ -42,7 +42,7 @@ export const PatientDetailsSection = ({
   }, [booked, id, startDate]);
 
   return (
-    <section className='py-6 flex flex-col md:flex-row gap-lg'>
+    <section className='p-6 flex flex-col md:flex-row gap-lg bg-white rounded-md shadow-md'>
       <img src='../img/default-user.png' alt='default user logo' />
       <div className='p-8'>
         <p>Name: {patientName};</p>

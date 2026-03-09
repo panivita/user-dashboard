@@ -6,6 +6,7 @@ const PatientsFetch = () => {
 
   const patientsPromise: Promise<any> = new Promise((resolve) => {
     setTimeout(() => {
+      let color = '';
       const dateNow = Date.now();
       const female = data.filter(({ sex }) => sex === 'female').length;
       const male = data.filter(({ sex }) => sex === 'male').length;
@@ -15,7 +16,28 @@ const PatientsFetch = () => {
         const age = getAge(patients.birthDate, dateNow);
         const vacDate = patients.vaccinationDate !== null && new Date(patients.vaccinationDate).getTime();
         const vacAge = patients.vaccinationDate !== null ? getAge(patients.birthDate, vacDate) : null;
-        return { ...patients, id: index, age: age, vacAge: vacAge };
+        if (vacAge !== null && patients.isVaccinated) {
+          if (
+            (patients.sex === 'male' && vacAge <= 13 && vacAge >= 11) ||
+            (patients.sex === 'female' && vacAge <= 9 && vacAge >= 7)
+          ) {
+            color = 'blue';
+          } else {
+            color = 'red';
+          }
+        } else {
+          if (
+            (patients.sex === 'male' && age <= 13 && age >= 11) ||
+            (patients.sex === 'female' && age <= 9 && age >= 7)
+          ) {
+            color = 'yellow';
+          }
+        }
+        const saved = localStorage.getItem('bookedDate');
+        const savedDate = saved !== null ? JSON.parse(saved) : [];
+        const bookedDateList = savedDate.find((datesList: { id: string | number }) => Number(datesList.id) === index);
+        const bookedDate = bookedDateList ? bookedDateList.startDate : '';
+        return { ...patients, id: index, age: age, vacAge: vacAge, color: color, bookedDate: bookedDate };
       });
       const femaleAge = patientsWithAge.filter(({ sex }) => sex === 'female').map(({ age }) => age);
       const femaleAgeOccurrences = femaleAge.reduce(function (acc, curr) {

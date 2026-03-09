@@ -29,7 +29,7 @@ const Layout = ({
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem className='hidden md:block text-white'>
-                  <BreadcrumbLink href='#'>Home</BreadcrumbLink>
+                  <BreadcrumbLink href='/'>Home</BreadcrumbLink>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
